@@ -1,0 +1,172 @@
+ /* CSS Reset and Global Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles for centering the content */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Equivalent to bg-gray-900 */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Main Weather Card Container */
+        .weather-card {
+            width: 100%;
+            max-width: 24rem; /* Equivalent to max-w-sm */
+            background-image: linear-gradient(to bottom right, #4DE4BD, #4B4B78); /* Gradient from-teal-400 to-blue-600 */
+            border-radius: 1.5rem; /* Equivalent to rounded-3xl */
+            padding: 1.5rem; /* Equivalent to p-6 */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Equivalent to shadow-2xl */
+        }
+    
+        /* Weather Info */
+        .weather-info{
+            display: none;
+        }
+
+        .error{
+            display: none;
+        }
+
+        /* Search Section */
+        .search-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0rem; /* Equivalent to mb-6 */
+            position: relative;
+            padding: 5px;
+        }
+
+        .search-input {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            padding: 0.75rem 3.5rem 0.75rem 1.25rem; /* py-3, pr-14, pl-5 */
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.3s ease;
+            margin-right: 60px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 0.60rem; /* p-3 */
+            border-radius: 9999px; /* rounded-full */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0px; /* Adjust positioning */
+        }
+
+        .search-button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .search-button svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        /* Weather Display Section */
+        .weather-display {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem; /* Equivalent to gap-4 */
+        }
+
+        .weather-icon {
+            width: 8rem; /* Equivalent to w-32 */
+            height: 8rem; /* Equivalent to h-32 */
+        }
+        .weather-icon img{
+            height:8rem;
+            width: 8rem;
+            margin-top: 10px;
+        }
+
+        /* Temperature */
+        .temperature {
+            font-size: 6rem; /* Equivalent to text-8xl */
+            font-weight: 700; /* font-bold */
+            letter-spacing: -0.05em; /* tracking-tighter */
+            line-height: 1;
+        }
+
+        .temperature .unit {
+            vertical-align: super;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 500; /* font-medium */
+            letter-spacing: normal; /* tracking-normal */
+        }
+
+        /* City Name */
+        .city-name {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 300; /* font-light */
+        }
+
+        /* Weather Details Section */
+        .weather-details {
+            margin-top: 2rem; /* mt-8 */
+            padding-top: 1.5rem; /* pt-6 */
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-item .value-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem; /* gap-2 */
+        }
+
+        .detail-item svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .detail-item .value {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+        }
+
+        .detail-item .value .unit {
+            font-size: 1rem; /* text-base */
+            font-weight: 400; /* font-normal */
+        }
+
+        .detail-item .label {
+            font-size: 0.875rem; /* text-sm */
+            opacity: 0.8;
+            margin-top: 0.25rem; /* mt-1 */
+        }
