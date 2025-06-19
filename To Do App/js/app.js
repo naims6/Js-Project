@@ -50,7 +50,7 @@ function addTask() {
         setTimeout(() => {
             input.style.borderColor = 'var(--border-color)';
         }, 2000);
-        // return;
+        return;
 
     }
 
