@@ -98,3 +98,13 @@
         .next-btn:hover {
             background-color: #334155; /* slate-700 */
         }
+        .question-timer{
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #020617;
+            border-radius: 50%;
+        }

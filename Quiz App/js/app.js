@@ -35,9 +35,11 @@ const questions = [
 const questionText = document.querySelector(".question-text")
 const answerList = document.querySelector(".options-list")
 const nextButton = document.querySelector(".next-btn")
+let questionTimer = document.querySelector(".question-timer")
 
 let currentQuestionIndex = 0;
 let score = 0;
+let questionTime = 10;
 
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -45,6 +47,29 @@ function startQuiz() {
     nextButton.innerHTML = "Next";
     showQuestion();
 }
+
+let timer;
+function minusTimer() {
+    timer = setInterval(() => {       
+        if(questionTime <= 0) {
+            questionTimer.innerHTML = 'X';
+
+            Array.from(answerList.children).forEach(btn => {
+            if(btn.dataset.correct === "true") {
+            btn.classList.add("correct");
+        }
+        btn.disabled = true;
+    });
+    nextButton.style.display = "block" 
+
+            clearInterval(timer)
+        } else {
+            questionTimer.innerHTML = questionTime;
+            questionTime--;
+        }
+    }, 1000)
+}
+
 
 function showQuestion() {
     resetState();
@@ -62,7 +87,8 @@ function showQuestion() {
             Button.dataset.correct = answer.correct
         }
         Button.addEventListener("click", selectAnswer);
-    })
+    });
+    minusTimer()
 }
 function resetState() {
     nextButton.style.display = "none";
@@ -77,8 +103,12 @@ function selectAnswer(e) {
     if(isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
+        questionTimer.innerHTML = 'X';
+        clearInterval(timer);
     } else {
         selectedBtn.classList.add("incorrect");
+        questionTimer.innerHTML = 'X';
+        clearInterval(timer);
     }
     Array.from(answerList.children).forEach(btn => {
         if(btn.dataset.correct === "true") {
@@ -93,11 +123,14 @@ function showScore() {
     resetState();
     questionText.innerHTML = `You scored ${score} out of ${questions.length}!`
     nextButton.innerHTML = "Play Again";
+        questionTimer.innerHTML = '';
+
     nextButton.style.display = "block"
 }
 
 function handleNextButton() {
     currentQuestionIndex++;
+    questionTime = 10;
     if(currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
@@ -114,5 +147,3 @@ nextButton.addEventListener("click", ()=> {
 })
 
 startQuiz()
-
-// console.log(questions.length)
