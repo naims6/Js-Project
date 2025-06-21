@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="container w-full mx-auto px-4">
+        <!-- Main Heading -->
+        <h1 class="text-3xl md:text-4xl font-bold mb-10">
+            Generate a
+            <span class="font-bold">Random Password</span>
+        </h1>
+
+        <!-- Password Display Area -->
+        <div class="password-input-container mb-6">
+            <input
+                type="text"
+                id="passwordDisplay"
+                class="password-input w-full p-4 rounded-lg shadow-md text-lg"
+                placeholder="Password"
+                readonly
+            />
+            <i onclick="copyPass()" class="fas fa-copy copy-icon"></i>
+        </div>
+
+        <!-- Generate Button -->
+        <button onclick="generatePassword()" class="generate-btn w-full md:w-auto flex items-center justify-center gap-2 p-4 rounded-lg shadow-md font-bold text-lg">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Generate Password</span>
+        </button>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
