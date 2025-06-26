@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+        background: linear-gradient(to right, #8e2de2, #f9a825);
+        width: 100%;
+        height: 100vh;
+        }
+        .container{
+            position: absolute;
+            top: 20%;
+            left: 8%;
+        }
+        .container span{
+            color: #FDF465;
+        }
+        .title h1{
+            color: white;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 33px;
+            font-weight: 800;
+        }
+        .birth-date{
+            padding: 29px;
+            background: rgba(255, 255, 255, 0.452);
+            border-radius: 8px;
+            width: 500px;
+            margin-bottom: 38px;
+            display: flex;
+            gap: 15px;
+        }
+        .birth-date input {
+            width: 80%;
+            height: 50px;
+            padding: 30px 15px;
+            font-size: 28px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+        }
+        .birth-date button {
+            padding: 15px 30px;
+            background: #FDF465;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            
+        }
+        .age h4 {
+            color: white;
+            font-size: 28px;
+            /* margin-left: 160px; */
+            line-height: 45px;
+        }
+        .m {
+            margin-left: 160px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Javascript <br><span>Age Calculator</span></h1>
+        </div>
+        <div class="birth-date">
+            <input id="birthday" type="date" placeholder="Select a Date"> 
+            <button onclick="showBirthDate()">Calculate</button>
+        </div>
+        <div class="age">
+            <h1 style="color: white; display: inline;">Your Age :</h1>
+            <h4 style="display: inline;"><span id="year"></span> Years</h4>
+            <h4 class="m"><span id="month"></span> Month</h4>
+            <h4 class="m"><span id="day"></span> Days</h4>
+            <!-- <h4 class="m"><span>40</span> Hours</h4>
+            <h4 class="m"><span>36</span> MInutes</h4> -->
+        </div>
+    </div>
+
+    <script>
+        const birthday = document.getElementById("birthday");
+        const age = document.querySelector(".age")
+        age.style.display = "none";
+        
+        function showBirthDate() {
+        if(birthday.value == "") {
+            alert("Insert Your Birthday date")
+        } else {
+            age.style.display = "block";
+
+            let year = document.getElementById("year")
+            let month = document.getElementById("month")
+            let day = document.getElementById("day")
+
+            let inputValue = birthday.value;     
+            let currentDate = new Date();
+            
+            // current date
+            let c_year = currentDate.getFullYear();
+            let c_month = currentDate.getMonth();
+            let c_date = currentDate.getDate();
+
+            // user birthdate
+            let [b_year, b_month, b_date] = inputValue.split("-")
+            
+            // user age
+            let r_year, r_month, r_date;
+            
+            // user age in year
+            r_year = c_year - b_year;
+            
+            // user age in month
+            if(c_month < b_month) {
+                r_year--;
+                r_month = 12 + c_month - b_month + 1;
+            } else {
+                r_month = c_month - b_month + 1;
+            }
+
+            // user age in date
+            if(c_date < b_date) {
+                r_month--;
+                r_date = 30 + c_date - b_date + 1;
+            } else {
+                r_date = c_date - b_date; 
+            }
+            year.innerHTML = r_year;
+            month.innerHTML = r_month;
+            day.innerHTML = r_date;
+        }       
+        }
+    </script>
+    <!-- NEED SOME MODIFICATON IN LOGIC -->
+</body>
+</html>
