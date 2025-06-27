@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Search</title>
+    <!-- FOnt awesome -->
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            background: #262A30;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+        }
+        .container {
+            width: 700px;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            flex-direction: column;
+            margin-top: 12%;
+        }
+        .search-box {
+            background: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-radius: 7px 7px 7px 7px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.541);
+
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            background: transparent;
+            padding: 25px 22px;
+            font-size: 20px;
+        }
+        .search-box button {
+            padding: 25px 22px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-radius: 7px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .search-box button img {
+            width: 23px;
+            height: 23px;
+        }
+        .auto-search {
+            width: 100%;
+            border-radius: 0 0 7px 7px;
+            background: rgba(255, 255, 255, 0.87);
+            max-height: 300px;
+            overflow-y: auto;
+            /* padding: 8px 0; */
+        }
+        .auto-search li {
+            list-style: none;
+            padding: 25px 22px;
+            transition: 0.3s;
+        }
+        .auto-search li:hover {
+            background: #ffffff93;
+        }
+        ::placeholder {
+            color: #555;
+        }
+     </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <input class="input-box" type="text" placeholder="Search anything">
+            <button><img src="./image/search.png" alt=""></button>
+        </div>
+            <ul class="auto-search">
+                <!-- <li>CSS</li>
+                <li>Javascript</li>
+                <li>How to edit photo</li>
+                <li>Python</li>
+                <li>Rakib Hasan</li>
+                <li>Jankar Mahbub</li> -->
+            </ul>
+    </div>
+<script>
+     let availableKeyword = [
+        'HTML',
+        'Css',
+        'Easy Tutorial',
+        'Web Design tutorials',
+        'Javascript',
+        'Where to learn coding online',
+        'How to create a website',
+        'Where are you'
+    ]
+
+    const resultBox = document.querySelector(".auto-search");
+    const searchBox = document.querySelector(".input-box");
+
+
+    searchBox.onkeyup = function() {
+        let result = [];
+        let input = searchBox.value;
+        
+        if(input.length) {
+            result = availableKeyword.filter((keyword) => {
+                return keyword.toLowerCase().includes(input.toLowerCase());
+            });
+             
+
+            display(result)
+            resultBox.style.display = "block";
+        }
+    }
+
+function display(result) {
+    const content = result.map((list) => {
+        return "<li onclick = selectInput(this)>" + list + "</li>"
+        
+
+    })
+    resultBox.innerHTML = content.join('')
+}
+
+function selectInput(l) {
+    searchBox.value = l.innerHTML
+    resultBox.style.display = "none";
+}
+
+
+</script>
+   
+</body>
+</html>
