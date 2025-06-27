@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Menu Design</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background: #FF5332;
+            background: linear-gradient(180deg, rgba(255, 83, 50, 1) 0%, rgba(101, 12, 32, 1) 50%);
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+        }
+        .select-menu {
+            width: 350px;
+        }
+        .select{
+            background: rgba(255, 255, 255, 0.7);
+            padding: 22px 22px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .select img{
+            width: 18px;
+            height: 18px;
+            transition: transform 0.5s;
+        }
+        #list-box{
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            
+        }
+        .select p {
+            display: flex;
+            gap: 10px;
+        }
+        #list-box li {
+            list-style: none;
+            display: flex;
+            padding: 18px 32px;
+            border-bottom: 1px solid rgba(153, 152, 152, 0.096);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        #list-box li:hover {
+            background: rgba(255, 255, 255, 0.548);
+            border-radius: 8px;
+        }
+        #list-box li img {
+            width: 25px;
+            height: 25px;
+            margin-right: 12px;
+        }
+        .visibility{
+            visibility: hidden;
+        }
+        .spin{
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="select-menu">
+            <div class="select">
+                <p id="showSelect">Select Your Social</p>
+                <img id="arrow-btn" src="./image/arrow.png">
+            </div>
+            <ul class="visibility" id="list-box">
+                <li class="list">
+                    <img src="./image/facebook.png">
+                    <p>Facebook</p>
+                </li>
+                <li class="list">
+                    <img src="./image/youtube.png">
+                    <p>YouTube</p>
+                </li>
+                <li class="list">
+                    <img src="./image/instagram.png">
+                    <p>Instragram</p>
+                </li>
+                <li class="list">
+                    <img src="./image/twitter.png">
+                    <p>Twiter</p>
+                </li>
+                <li class="list">
+                    <img src="./image/pinterest.png">
+                    <p>Pinterest</p>
+                </li>
+                <li class="list">
+                    <img src="./image/whatsapp.png">
+                    <p>WhatsApp</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const selectInput = document.getElementById("showSelect")
+        const listBox = document.getElementById("list-box")
+        const arrowBtn = document.getElementById("arrow-btn")
+        const list = document.getElementsByClassName("list")
+        const select = document.querySelector(".select")
+
+
+        select.onclick = function() {
+            listBox.classList.toggle("visibility")
+            arrowBtn.classList.toggle("spin")
+        }
+
+        for(lists of list) {
+            lists.onclick = function() {
+                selectInput.innerHTML = this.innerHTML;
+                listBox.classList.toggle("visibility")
+                arrowBtn.classList.toggle("spin")
+
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>
