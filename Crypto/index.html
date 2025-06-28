@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto App</title>
+    <!-- Css link -->
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">        
+            <nav class="header">
+            <div class="left-nav">
+                <img src="./images/logo.png" alt="">
+                <ul class="menu-list">
+                    <li>Market</li>
+                    <li>Features</li>
+                    <li>White Papers</li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+            <span class="en">EN</span>
+            <div class="menu">
+                <button class="menu-btn" onclick="showMenu()"><img class="menu-bar" src="./images/menu-bar.png" alt=""></button>
+            </div>
+        </nav>
+
+        <section class="content">
+            <h1>BUY & <br> SELL <span style="color: #FF960B;">Crypto</span></h1>
+            <p>World's biggest Cryptocurrensy exchange available on web <br> as well as mobile phone</p>
+            <button class="btn">Explore More</button>
+        </section>
+        <section class="crypto">
+            <div class="coin">
+                <img src="./images/bitcoin.png" alt="">
+                <div class="coin-deatail">
+                    <p>$00</p>
+                    <span>Bitcoin</span>
+                </div>
+            </div>
+             <div class="coin">
+                <img src="./images/dogecoin.png" alt="">
+                <div class="coin-deatail">
+                    <p>$00</p>
+                    <span>Dogecoin</span>
+                </div>
+            </div>
+             <div class="coin">
+                <img src="./images/ethereum.png" alt="">
+                <div class="coin-deatail">
+                    <p>$00</p>
+                    <span>Ethereum</span>
+                </div>
+            </div>
+        </section>
+        </div>   
+        <div class="sectoin">
+            <!-- Make it responsive -->
+            <!-- <p style="color: green;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit expedita quam dolores quas consequatur. Illo molestiae consectetur voluptatem eaque sunt, aperiam ratione soluta deleniti sequi reiciendis pariatur mollitia, aspernatur recusandae distinctio quod. Vero aspernatur quod explicabo laboriosam nulla voluptatum vel porro et eligendi, enim, ad eveniet deleniti ipsam cupiditate distinctio dolores voluptates quibusdam debitis! Quo eum voluptates nostrum repellat eaque tenetur ipsa natus similique blanditiis, porro pariatur quasi, ullam sit asperiores modi minus deleniti distinctio nulla? Quisquam nesciunt velit natus asperiores fugiat doloribus deserunt nostrum, unde quos omnis vel consectetur quo qui voluptas ducimus eius repellat, accusamus magni! Cupiditate ab ut error expedita perferendis iure quisquam magni officiis eveniet tempora debitis optio distinctio laborum autem esse velit, ducimus quidem asperiores natus perspiciatis quas nam eos impedit. Quis sint numquam omnis aut totam voluptatem fugit vero reiciendis consequatur cum temporibus nemo voluptate deserunt id eveniet, possimus quidem pariatur harum minus neque. Sed est amet iste quasi ipsum, accusantium magni. Sed modi earum repudiandae possimus quos sunt eius aut aliquid error deleniti nemo, ea itaque veritatis dignissimos nesciunt voluptatibus laborum labore fuga. Enim fuga libero tenetur unde corrupti, cumque omnis? Quam similique dolorem fugit suscipit aspernatur numquam quos officiis ducimus molestiae. Doloribus sint eius voluptatibus quisquam doloremque excepturi sed et? Ut quisquam autem dolorum. Tempore doloribus dolor voluptate ullam, officiis omnis unde mollitia hic error tenetur laudantium consequuntur similique necessitatibus iure odio temporibus, laborum, ducimus assumenda ipsa? Facilis veniam, numquam nobis quo expedita rerum excepturi voluptatem, quia unde laudantium quos quisquam tempora vel natus! Vitae, ullam obcaecati delectus omnis corporis animi odit? Qui, minima perferendis magnam eum ipsum, hic ea vitae rerum, officiis cupiditate amet! Quibusdam, fuga rem maiores ut a nisi dolorum atque veritatis architecto dicta reiciendis quasi reprehenderit nobis dolores eligendi tempore, earum mollitia voluptatibus incidunt totam laborum fugiat sed. Sed maiores, nostrum autem sequi illo ad ipsum soluta impedit cumque nulla sint enim pariatur ab consequuntur sit perspiciatis quisquam excepturi laborum neque corrupti iure. Suscipit enim vel quidem! Necessitatibus nostrum provident quidem tempora accusantium exercitationem? Sit dolore deleniti harum perferendis temporibus ad voluptates quos quasi culpa aliquam quaerat recusandae, cum commodi modi maiores similique ex! Consequatur dicta ipsum quam odit veniam fugit, deleniti molestiae, minus incidunt ad necessitatibus aperiam dolorum obcaecati quae? Totam vero, corrupti dolor odio eveniet facilis exercitationem quibusdam excepturi harum ea. Accusamus, cupiditate? Quasi sunt earum delectus hic ad accusantium deserunt placeat ullam magnam quod et excepturi consequatur, amet voluptatum beatae molestiae laudantium. Nam, rerum tempora. Error explicabo natus blanditiis eius laborum iusto ipsum eos fugit consequatur nostrum quos deleniti, repellendus a! Quae corporis esse exercitationem ducimus accusamus, et earum deserunt voluptate maxime optio, architecto odit unde perspiciatis quos impedit obcaecati nostrum eius doloribus sequi beatae mollitia. Consectetur eveniet alias dicta blanditiis aperiam facere ipsa placeat totam, veniam nesciunt. Repudiandae beatae tempora delectus fugiat asperiores, aliquid sit ullam distinctio! Minima non quod, quia voluptate, ipsum maxime facilis reiciendis sed eum porro repellendus velit esse nesciunt aperiam explicabo nostrum placeat. Repudiandae nam fugiat consequatur labore adipisci odio?</p> -->
+        </div>
+
+        <script>
+            const menuList = document.querySelector(".menu-list")
+            const menuBtn = document.querySelector(".menu-btn")
+            const menuImg = document.querySelector(".menu-bar")
+            function showMenu() {
+                if(menuImg.src === "http://127.0.0.1:5500/Crypto/images/menu-bar.png") {
+                    menuList.style.right = "3%"
+                    menuImg.src = "./images/delete-button.png"
+                } else {
+                    menuList.style.right = "-102%"
+                    menuImg.src = "./images/menu-bar.png"
+                }
+            }
+        </script>
+    
+</body>
+</html>
