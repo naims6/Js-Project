@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            background: #ECEAFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 450px;
+            padding: 30px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-image: linear-gradient(rgba(0,0,0, 0.8), rgba(0,0,0, 0.8)), url(./images/background.png);
+            background-size: cover;
+        }
+        .timer {
+            margin: 13% 0px;
+        }
+        .timer h1 {
+            color: white;
+            font-size: 42px;
+        }
+        .controls img {
+            width: 40px;
+            height: 40px;
+            margin: 12px;
+        }
+        .controls img:nth-child(2) {
+            transform: scale(1.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer">
+            <h1 id="time">00 : 00 : 00</h1>
+        </div>
+        <div class="controls">
+            <img src="./images/stop.png" alt="" onclick="pause()">
+            <img src="./images/start.png" alt="" onclick="start()">
+            <img src="./images/reset.png" alt="" onclick="reset()">
+        </div>
+    </div>
+    <script>
+        let time = document.getElementById("time");
+        let [hours, minute, seconds] = [0, 0, 0];
+        let naim = false;
+        console.log(naim == false)
+
+        function startTimer() {
+            seconds++;
+            if(seconds == 60) {
+                minute++;
+                seconds = 0;
+                if(minute == 60) {
+                    hours++;
+                    minute = 0;
+                }
+            }
+            let h = hours < 10 ? "0" + hours : hours;
+            let m = hours < 10 ? "0" + minute : minute;
+            let s = hours < 10 ? "0" + seconds : seconds;
+
+            time.innerHTML = h + " : " + m + " : " + s;
+        }
+        let interVal;
+        function start() {
+            if(naim == false) {
+                interVal = setInterval(startTimer, 1000) ;
+                naim = true;
+            } else {
+                clearInterval(interVal);
+                naim = false
+            }
+            
+        }
+        function reset() {
+            time.innerHTML = "00 : 00 : 00";
+            clearInterval(interVal)
+            seconds = 0;
+            minute = 0;
+            hours = 0;    
+        }
+        function pause() {
+            clearInterval(interVal)
+        }
+        
+    </script>
+</body>
+</html>
