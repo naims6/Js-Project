@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Show</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background: #F1F9FE;
+            width: 100%;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+        }
+        .main {
+            position: relative;
+            width: 60%;
+            margin: auto;
+            background-image: url(./images/background.png);
+            overflow: hidden; 
+        }
+        .main img {
+            width: 100%;
+        }
+        .img-wrap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden; 
+        }
+        span {
+            width: 10px;
+            height: 100%;
+            cursor: ew-resize;
+            background: white;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .arrow {
+            width: 40px;
+            position: absolute;
+            top: 50%;
+            margin-left: -20px;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <img src="./images/transparent.png">
+
+            <div class="img-wrap">
+                <img src="./images/original.jpg" id="original-img">
+            </div>
+
+            <span>
+                <img src="./images/arrow.png" class="arrow">
+            </span>
+        </div>
+    </div>
+
+    <script>
+        const imgBox = document.querySelector(".main");
+        const imgWrap = document.querySelector(".img-wrap");
+        let originalImg = document.getElementById("original-img");
+
+        originalImg.style.width = imgBox.offsetWidth + "px";
+
+        console.log(imgBox.offsetLeft)
+        console.log(imgBox.offsetWidth)
+
+        let leftSpace = imgBox.offsetLeft
+        imgBox.onmousemove = function(e) {
+            let boxWidth = (e.pageX - leftSpace) + "px";
+            imgWrap.style.width = boxWidth;
+        }
+
+    </script>
+</body>
+</html>
