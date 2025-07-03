@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text To Speech</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(45deg, #0C0C5B, #4E1663);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 600px;
+            /* margin: auto; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .title h1 {
+            color: white;
+            font-size: 51px;
+            font-weight: 500;
+            margin-bottom: 38px;
+        }
+        .title span {
+            color: #D73C68;
+            position: relative;
+        }
+        .title span::after {
+            content: "";
+            width: 210px;
+            height: 4px;
+            background: white;
+            position: absolute;
+            bottom: -10px;
+            right: 6px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.308);
+            border-radius: 14px;
+            padding: 21px 35px;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            margin-bottom: 28px;
+            color: white;
+        }
+        textarea::placeholder {
+            color: #ddd;
+        }
+        .voice {
+            display: flex;
+            width: 100%;
+        }
+        .voice select {
+            flex: 1;
+            border: none;
+            outline: none;
+            /* width: 100%; */
+            padding: 20px 30px;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.308);
+            appearance: none;
+            margin-right: 20px;
+            background-image: url(images/dropdown.png);
+            background-repeat: no-repeat;
+            background-size: 15px;
+            background-position-x: calc(100% - 20px);
+            background-position-y: 28px;
+        }
+        
+        .voice button{
+            width: 130px;
+            border: none;
+            outline: none;
+            background: #D53754;
+            color: white;
+            padding: 20px 35px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .voice button img {
+            width: 16px;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Text To Speech <span>Converter</span></h1>
+        </div>
+        <textarea placeholder="Write Anything here..." id=""></textarea>
+        <div class="voice">
+            <select name="" id="">
+                
+            </select>
+            <button><img src="./images/play.png" alt="">Listen</button>
+        </div>
+    </div>
+
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+        let voices = [];
+        let voiceSelect = document.querySelector("select");
+
+        window.speechSynthesis.onvoiceschanged = () => {
+            voices = window.speechSynthesis.getVoices();
+            speech.voice = voices[0];
+            // console.log(voices)
+
+            voices.forEach((voice, i) => {
+                voiceSelect.options[i] = new Option(voice.name, i)
+            })
+
+        }
+
+        let btn = document.querySelector("button")
+
+        btn.addEventListener("click", (e) => {
+            console.log(e)
+            speech.text = document.querySelector("textarea").value
+            window.speechSynthesis.speak(speech)
+        }) 
+    </script>
+</body>
+</html>
