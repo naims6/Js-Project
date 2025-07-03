@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qr Generator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            background: #262A30;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 370px;
+            padding: 22px 32px;
+            background: white;
+            border-radius: 10px;
+        }
+        /* .title {
+            margin-bottom: 15px;
+        } */
+        .title p {
+            color: black;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .input-box input {
+            width: 100%;
+            border: 1px solid rgb(97, 97, 97);
+            outline: none;
+            padding: 22px 15px;
+            border-radius: 8px;
+        }
+        .jakuni {
+            animation: jakuni 0.1s 8;
+        }
+        @keyframes jakuni {
+            100%{
+                transform: translateX(2px);
+                border-color: red;
+            }
+            75%{
+                transform: translateX(0px);
+                border-color: red;
+            }
+            50%{
+                transform: translateX(-2px);
+                border-color: red;
+            }
+            25%{
+                transform: translateX(0px);
+                border-color: red;
+            }
+            0%{
+                transform: translateX(2px);
+                border-color: red;
+            }
+        }
+        .qr-box {
+            width: 80%;
+            margin: 20px auto;
+            height: 0px;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .qr-box img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #a7a7a7;
+            padding: 3px;
+            border-radius: 5px;
+        }
+        .qr-btn button {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: #414ED3;
+            padding: 22px 25px;
+            border-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <p>Enter your text or URL</p>
+        </div>
+        <div class="input-box">
+            <input class="input" type="text" placeholder="Search Qr">
+        </div>
+        <div class="qr-box">
+            <img class="qr" src="" alt="">
+        </div>
+        <div class="qr-btn">
+            <button onclick="generateQr()">Generate QR Code</button>
+        </div>
+    </div>
+
+    <script>
+        const input = document.querySelector(".input");
+        const qr = document.querySelector(".qr");
+        const qrBox = document.querySelector(".qr-box");
+        
+        async function generateQr() {
+            inputValue = input.value;
+            if(inputValue.length === 0) {
+                input.classList.add("jakuni")
+                setTimeout(() => {
+                    input.classList.remove("jakuni")
+                },1000)        
+            }
+            const responce = await fetch(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputValue}`);
+            const data = responce.url;
+            qr.src = data;
+            qrBox.style.height = "200px"
+        }
+        document.addEventListener("keydown", (e) => {
+            if(e.key === "Enter") {
+                generateQr()
+            }
+        })
+    </script>
+</body>
+</html>
