@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheet</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)), url(./email-subs-img/background.png);
+        }
+        .main {
+            margin: 12% 0% 0% 10%; 
+        }
+        .main h3{
+            color: white;
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-size: 36px;
+        }
+        .main h1 {
+            color: white;
+            font-size: 55px;
+            line-height: 75px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .main p {
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .email {
+            margin: 25px 0;
+            display: flex;
+        }
+        .password {
+            display: flex;
+            margin: 25px 0;
+        }
+        .main input {
+            border: none;
+            outline: none;
+            padding: 20px 15px 20px 15px;
+            background: white;
+            width: 300px;
+            /* border-radius: 10px; */
+            font-size: 17px;
+        }
+        .main button {
+            width: 80px;
+            background: #4E9444;
+            padding: 20px 15px 20px 15px;
+            border: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main img {
+            width: 50%;
+        }
+        .sign-up button {
+            width: 380px;
+            color: white;
+            padding: 22px 15px 22px 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h3>Coming Soon!</h3>
+            <h1>Our Brand New <br> Website Is On It's Way</h1>
+            <p style="margin-bottom: 50px;">Subscribe for more deatails.</p>
+
+            <form name="submit-to-google-sheet">
+                <div class="email">
+                <input required type="text" name="Email" placeholder="Your email id" class="input">
+                <button><img src="./email-subs-img/send-icon.png" alt=""></button>
+            </div>
+            <div class="password">
+                <input required type="password" name="Password" placeholder="Enter Password" class="input">
+                <button><img src="./email-subs-img/send-icon.png" alt=""></button>
+            </div>
+            <div class="sign-up">
+                <button type="submit">Sign Up</button>   
+            </div>
+            </form>    
+        </div>   
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzdj26b4DS9-ddGPcbA2sfs54Bl78CS1btUXxMGrICD4PfR7J5KgyIwYzwCo5E3N7llGA/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+           // Space trim
+            const inputs = document.querySelectorAll("input")
+            console.log(inputs)
+            inputs.forEach((i) => {
+                i.value = i.value.trim()
+            })
+            const formData = new FormData(form);
+
+
+            fetch(scriptURL, { 
+                method: 'POST',
+                body: formData
+            })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+</script>
+</body>
+</html>
